@@ -1,4 +1,5 @@
 from django.db import models
+from .utils import codegen
 
 # Create your models here.
 class TinyUrl(models.Model):
@@ -7,3 +8,7 @@ class TinyUrl(models.Model):
 
     def __str__(self):
         return self.url
+
+    def save(self, *args, **kwargs):
+        self.shorturl = codegen()
+        super(TinyUrl, self).save(*args, **kwargs)
