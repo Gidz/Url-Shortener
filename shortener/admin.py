@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import URLs
+from .models import TinyUrl
 
 # Register your models here.
-admin.site.register(URLs)
+admin.site.register(TinyUrl)
