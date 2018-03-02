@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-# Create your views here.
+from .models import TinyUrl
 
 def index(request):
     return render(request,"shortener/index.html",{})
+
+def short_url_redirect(request,slug):
+    obj = TinyUrl.objects.get(shorturl=slug)
+    return redirect(obj.url)
